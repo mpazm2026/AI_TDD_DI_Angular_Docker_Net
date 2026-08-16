@@ -3,7 +3,7 @@
 # Uses the official .NET 10 SDK image to restore, build, and publish the app.
 # Build context: repo root
 # =============================================================================
-FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+FROM docker.io/alpine/dotnet-sdk:10.0 AS build
 WORKDIR /src
 
 # Copy project files first so NuGet restore is cached as a separate layer.
@@ -31,7 +31,7 @@ RUN dotnet publish backend/SmartCards.API/SmartCards.API.csproj \
 # Stage 2 — Runtime
 # Uses the official slim ASP.NET Core 10 runtime image (no SDK overhead).
 # =============================================================================
-FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
+FROM docker.io/alpine/dotnet-aspnet:10.0 AS runtime
 WORKDIR /app
 
 # Copy only the published output from the build stage.
@@ -39,7 +39,6 @@ COPY --from=build /app/publish .
 
 # Render.com requires the app to bind to port 10000.
 ENV ASPNETCORE_URLS=http://+:10000
-
 EXPOSE 10000
 
 ENTRYPOINT ["dotnet", "SmartCards.API.dll"]
