@@ -1,0 +1,14 @@
+- Created using Gemini, Copilot Actions, Antigravity CLI and Amazon Q Developer CLI
+- Used multiple ASs for compare:
+  - found out that Copilot Actions is not the best on quality code, event with the .md file
+  - Antigracity CLI is great in coding but the token quota for free tier is really short (1 hour, couple for multifile requests)
+  - Gemini, as always great with the suggestions and bigger picture overall.
+- Used DI dor decoupling, Angular front end as practice and .net 10 for the docker practice as well
+- Deployed backed in render.com
+- Deployed frontend in verce.com
+- The backend required a Dockerfile since render.com do not executes .net natively
+- The docker file is regularly a bit complex due the differences in the image creation approaches between gemini and the local AI agent
+- In this particular case, there were three main changes:
+  - AQD CLI found that the .gitignore was discarding one projec
+  - The csproj files were using \ instead of / required by the linux servers in Render.com
+  - The DOTNET_USE_POLLING_FILE_WATCHER=true was required to avoid Render doing it and stopping the deployment process.
