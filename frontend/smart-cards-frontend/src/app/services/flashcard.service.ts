@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface Flashcard {
   id?: string;
@@ -15,7 +16,7 @@ export interface Flashcard {
   providedIn: 'root'
 })
 export class FlashcardService {
-  private apiUrl = 'http://localhost:5259/api/flashcards';
+  private apiUrl = `${environment.apiBaseUrl}/api/flashcards`;
 
   constructor(private http: HttpClient) {}
 
