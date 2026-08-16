@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Flashcards.Core\Flashcards.Core.csproj" />
-    <ProjectReference Include="..\Flashcards.Controllers\Flashcards.Controllers.csproj" />
+    <ProjectReference Include="../Flashcards.Core/Flashcards.Core.csproj" />
+    <ProjectReference Include="../Flashcards.Controllers/Flashcards.Controllers.csproj" />
   </ItemGroup>
 
 </Project>

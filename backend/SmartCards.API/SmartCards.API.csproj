@@ -12,9 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Modules\Flashcards\Flashcards.Controllers\Flashcards.Controllers.csproj" />
-    <ProjectReference Include="..\Modules\Flashcards\Flashcards.Core\Flashcards.Core.csproj" />
-    <ProjectReference Include="..\Modules\Flashcards\Flashcards.Infrastructure\Flashcards.Infrastructure.csproj" />
+    <ProjectReference Include="../Modules/Flashcards/Flashcards.Controllers/Flashcards.Controllers.csproj" />
+    <ProjectReference Include="../Modules/Flashcards/Flashcards.Core/Flashcards.Core.csproj" />
+    <ProjectReference Include="../Modules/Flashcards/Flashcards.Infrastructure/Flashcards.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

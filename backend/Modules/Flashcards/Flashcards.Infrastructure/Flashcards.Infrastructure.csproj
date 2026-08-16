@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Flashcards.Core\Flashcards.Core.csproj" />
+    <ProjectReference Include="../Flashcards.Core/Flashcards.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
