@@ -13,7 +13,6 @@ COPY backend/SmartCards.API/SmartCards.API.csproj                               
 COPY backend/Modules/Flashcards/Flashcards.Core/Flashcards.Core.csproj                              backend/Modules/Flashcards/Flashcards.Core/
 COPY backend/Modules/Flashcards/Flashcards.Controllers/Flashcards.Controllers.csproj                backend/Modules/Flashcards/Flashcards.Controllers/
 COPY backend/Modules/Flashcards/Flashcards.Infrastructure/Flashcards.Infrastructure.csproj          backend/Modules/Flashcards/Flashcards.Infrastructure/
-COPY backend/Modules/Flashcards/Flashcards.Tests/Flashcards.Tests.csproj                            backend/Modules/Flashcards/Flashcards.Tests/
 
 # Restore only the API entry project (and its transitive dependencies).
 RUN dotnet restore backend/SmartCards.API/SmartCards.API.csproj
