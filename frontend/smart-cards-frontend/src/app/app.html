@@ -1,0 +1,410 @@
+<!-- Smart Cards Dashboard -->
+<div data-testid="dashboard" class="dashboard">
+  <!-- Header -->
+  <header data-testid="app-header" class="app-header">
+    <div class="header-top-row">
+      <div class="header-brand">
+        <div class="brand-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="3" rx="2"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <h1 data-testid="app-title" class="app-title">Smart Cards</h1>
+      </div>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <!-- Tech Stack Toggle -->
+        <button
+          class="tech-stack-btn"
+          (click)="toggleTechStack()"
+          [class.tech-stack-btn--active]="showTechStack()"
+          aria-label="Toggle tech stack info"
+          title="View tech stack"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 16 4-4-4-4"/>
+            <path d="m6 8-4 4 4 4"/>
+            <path d="m14.5 4-5 16"/>
+          </svg>
+          <span>Stack</span>
+          <svg class="chevron-icon" [class.chevron-icon--open]="showTechStack()" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+
+        <!-- Language Toggle Switch (EN / ES) -->
+        <button
+          data-testid="language-toggle"
+          class="lang-toggle-btn"
+          (click)="toggleLanguage()"
+          [attr.aria-label]="currentLanguage() === 'en' ? 'Translate cards to Spanish' : 'Traducir tarjetas al Inglés'"
+          [title]="currentLanguage() === 'en' ? 'Translate to Spanish (ES)' : 'Traducir a Inglés (EN)'"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lang-icon">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+            <path d="M2 12h20"></path>
+          </svg>
+          <div class="lang-segmented">
+            <span class="lang-tag" [class.lang-active]="currentLanguage() === 'en'">EN</span>
+            <span class="lang-tag" [class.lang-active]="currentLanguage() === 'es'">ES</span>
+          </div>
+        </button>
+
+        <!-- Dark Mode Toggle -->
+        <button
+          class="dark-mode-toggle"
+          (click)="toggleDarkMode()"
+          [attr.aria-label]="isDarkMode() ? 'Switch to light mode' : 'Switch to dark mode'"
+          title="Toggle dark mode"
+        >
+          @if (isDarkMode()) {
+            <!-- Sun icon (for switching to light mode) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          } @else {
+            <!-- Moon icon (for switching to dark mode) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          }
+        </button>
+      </div>
+    </div>
+
+    <!-- Tech Stack Retractable Panel -->
+    <div class="tech-stack-panel" [class.tech-stack-panel--open]="showTechStack()" aria-hidden="{{ !showTechStack() }}">
+      <div class="tech-stack-inner">
+        <div class="tech-stack-section">
+          <h3 class="tech-stack-heading">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            Backend
+          </h3>
+          <div class="tech-stack-group">
+            <span class="tech-stack-label">Technologies</span>
+            <div class="tech-tags">
+              <span class="tech-tag tech-tag--blue">.NET 10 / ASP.NET Core</span>
+              <span class="tech-tag tech-tag--orange">AWS DynamoDB</span>
+              <span class="tech-tag tech-tag--gray">DotNetEnv</span>
+              <span class="tech-tag tech-tag--gray">OpenAPI / Swagger</span>
+              <span class="tech-tag tech-tag--gray">xUnit</span>
+              <span class="tech-tag tech-tag--gray">NSubstitute</span>
+              <span class="tech-tag tech-tag--gray">coverlet</span>
+            </div>
+          </div>
+          <div class="tech-stack-group">
+            <span class="tech-stack-label">Design Patterns</span>
+            <div class="tech-tags">
+              <span class="tech-tag tech-tag--purple">Modular Monolith</span>
+              <span class="tech-tag tech-tag--purple">Clean Architecture</span>
+              <span class="tech-tag tech-tag--purple">Repository Pattern</span>
+              <span class="tech-tag tech-tag--purple">Service / Manager Pattern</span>
+              <span class="tech-tag tech-tag--purple">Dependency Injection</span>
+              <span class="tech-tag tech-tag--purple">Interface Segregation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-stack-divider"></div>
+
+        <div class="tech-stack-section">
+          <h3 class="tech-stack-heading">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            Frontend
+          </h3>
+          <div class="tech-stack-group">
+            <span class="tech-stack-label">Technologies</span>
+            <div class="tech-tags">
+              <span class="tech-tag tech-tag--red">Angular 22</span>
+              <span class="tech-tag tech-tag--blue">TypeScript 6</span>
+              <span class="tech-tag tech-tag--pink">RxJS 7.8</span>
+              <span class="tech-tag tech-tag--blue">Angular HttpClient</span>
+              <span class="tech-tag tech-tag--gray">Vitest</span>
+              <span class="tech-tag tech-tag--gray">Playwright</span>
+              <span class="tech-tag tech-tag--gray">Prettier</span>
+            </div>
+          </div>
+          <div class="tech-stack-group">
+            <span class="tech-stack-label">Design Patterns</span>
+            <div class="tech-tags">
+              <span class="tech-tag tech-tag--green">Signals-based Reactivity</span>
+              <span class="tech-tag tech-tag--green">Service Layer</span>
+              <span class="tech-tag tech-tag--green">Component-Driven Architecture</span>
+              <span class="tech-tag tech-tag--green">Observer Pattern (RxJS)</span>
+              <span class="tech-tag tech-tag--green">Computed Derived State</span>
+              <span class="tech-tag tech-tag--green">Renderer2 DOM Manipulation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="dashboard-main">
+    <!-- Toolbar / Action Bar -->
+    <div class="action-bar">
+      <div class="action-group-left">
+        <button
+          data-testid="add-card-button"
+          class="btn-primary"
+          (click)="openAddCardModal()"
+          [disabled]="isSubmitting()"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          {{ currentLanguage() === 'es' ? 'Agregar Tarjeta' : 'Add Card' }}
+        </button>
+
+        @if (cards().length > 0) {
+          <button
+            class="btn-secondary"
+            (click)="flipAllCards()"
+            [disabled]="isSubmitting() || filteredCards().length === 0"
+            title="Toggle all cards"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+            </svg>
+            {{ areAllCardsFlipped() ? (currentLanguage() === 'es' ? 'Mostrar Preguntas' : 'Show Questions') : (currentLanguage() === 'es' ? 'Revelar Respuestas' : 'Reveal Answers') }}
+          </button>
+        }
+
+        <!-- Delete Button (shown when cards are selected) -->
+        @if (hasSelectedCards()) {
+          <button
+            class="btn-danger"
+            (click)="deleteSelectedCards()"
+            [disabled]="isSubmitting()"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+            </svg>
+            {{ currentLanguage() === 'es' ? 'Eliminar Seleccionadas' : 'Delete Selected' }} ({{ selectedCardIds().size }})
+          </button>
+        }
+      </div>
+
+      <div class="action-group-right">
+        <!-- Search filter -->
+        @if (cards().length > 0) {
+          <div class="search-box">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input
+              type="text"
+              class="search-input"
+              [placeholder]="currentLanguage() === 'es' ? 'Buscar tarjetas...' : 'Search cards...'"
+              [ngModel]="searchQuery()"
+              (ngModelChange)="searchQuery.set($event)"
+              aria-label="Search flashcards"
+            />
+            @if (searchQuery()) {
+              <button class="search-clear" (click)="searchQuery.set('')" aria-label="Clear search">×</button>
+            }
+          </div>
+
+          <div class="stats-badge">
+            <span>{{ filteredCards().length }} {{ currentLanguage() === 'es' ? (filteredCards().length === 1 ? 'tarjeta' : 'tarjetas') : (filteredCards().length === 1 ? 'card' : 'cards') }}</span>
+            @if (flippedCardIds().size > 0) {
+              <span class="stats-separator">•</span>
+              <span class="stats-flipped">{{ flippedCardIds().size }} {{ currentLanguage() === 'es' ? 'reveladas' : 'flipped' }}</span>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Cards List with 3D Flip capability -->
+    <div data-testid="cards-list" class="cards-list">
+      @for (card of filteredCards(); track card.id) {
+        <div
+          class="card card-container"
+          [class.card-selected]="isCardSelected(card.id)"
+          (click)="toggleCardFlip(card.id)"
+          tabindex="0"
+          role="button"
+          [attr.aria-label]="isCardFlipped(card.id) ? 'Card flipped to answer' : 'Card showing question'"
+          (keydown.enter)="toggleCardFlip(card.id)"
+          (keydown.space)="toggleCardFlip(card.id); $event.preventDefault()"
+        >
+          <div class="card-inner" [class.is-flipped]="isCardFlipped(card.id)">
+            <!-- Front Face (Question) -->
+            <div class="card-face card-front">
+              <div class="card-header">
+                <span class="badge badge-question">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                  {{ currentLanguage() === 'es' ? 'Pregunta' : 'Question' }}
+                </span>
+                <input
+                  type="checkbox"
+                  class="card-checkbox"
+                  [checked]="isCardSelected(card.id)"
+                  (change)="toggleCardSelection(card.id)"
+                  (click)="$event.stopPropagation()"
+                  [disabled]="isSubmitting()"
+                  aria-label="Select card"
+                />
+              </div>
+
+              <div class="card-body">
+                <p class="card-text">{{ getTranslatedText(card.FrontText || card.frontText) }}</p>
+              </div>
+
+              <div class="card-footer">
+                <span class="flip-hint">
+                  <svg class="flip-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                  </svg>
+                  {{ currentLanguage() === 'es' ? 'Clic para ver respuesta' : 'Click to reveal answer' }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Back Face (Answer) -->
+            <div class="card-face card-back">
+              <div class="card-header">
+                <span class="badge badge-answer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  {{ currentLanguage() === 'es' ? 'Respuesta' : 'Answer' }}
+                </span>
+                <input
+                  type="checkbox"
+                  class="card-checkbox"
+                  [checked]="isCardSelected(card.id)"
+                  (change)="toggleCardSelection(card.id)"
+                  (click)="$event.stopPropagation()"
+                  [disabled]="isSubmitting()"
+                  aria-label="Select card"
+                />
+              </div>
+
+              <div class="card-body">
+                <p class="card-text">{{ getTranslatedText(card.BackText || card.backText) }}</p>
+              </div>
+
+              <div class="card-footer">
+                <span class="flip-hint">
+                  <svg class="flip-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                  </svg>
+                  {{ currentLanguage() === 'es' ? 'Clic para ver pregunta' : 'Click to show question' }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      } @empty {
+        <div class="empty-state">
+          <div class="empty-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="3" rx="2"/>
+              <line x1="8" y1="12" x2="16" y2="12"/>
+            </svg>
+          </div>
+          @if (searchQuery()) {
+            <p class="empty-title">{{ currentLanguage() === 'es' ? 'No se encontraron tarjetas que coincidan con' : 'No cards found matching' }} "{{ searchQuery() }}"</p>
+            <p class="empty-subtitle">{{ currentLanguage() === 'es' ? 'Intenta ajustar tu término de búsqueda.' : 'Try clearing or adjusting your search filter.' }}</p>
+            <button class="btn-secondary" (click)="searchQuery.set('')">{{ currentLanguage() === 'es' ? 'Limpiar Búsqueda' : 'Clear Search' }}</button>
+          } @else {
+            <p class="empty-title">{{ currentLanguage() === 'es' ? 'No hay tarjetas aún' : 'No flashcards yet' }}</p>
+            <p class="empty-subtitle">{{ currentLanguage() === 'es' ? 'Crea tu primera tarjeta para comenzar.' : 'Create your first flashcard to start learning.' }}</p>
+            <button class="btn-primary" (click)="openAddCardModal()">{{ currentLanguage() === 'es' ? 'Crear Tarjeta' : 'Create Flashcard' }}</button>
+          }
+        </div>
+      }
+    </div>
+  </main>
+</div>
+
+<!-- Add Card Modal -->
+@if (showAddCardModal()) {
+  <div class="modal-overlay" (click)="closeAddCardModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2>Add New Flashcard</h2>
+        <button class="modal-close-btn" (click)="closeAddCardModal()" [disabled]="isSubmitting()" aria-label="Close modal">
+          ×
+        </button>
+      </div>
+
+      <form class="add-card-form" (ngSubmit)="submitCard()">
+        <!-- Error Message -->
+        @if (errorMessage()) {
+          <div class="error-message">{{ errorMessage() }}</div>
+        }
+
+        <!-- Front Text Input -->
+        <div class="form-group">
+          <label for="frontText">Front (Question / Prompt)</label>
+          <textarea
+            id="frontText"
+            [(ngModel)]="formData.frontText"
+            name="frontText"
+            placeholder="Enter the question or prompt..."
+            rows="3"
+            [disabled]="isSubmitting()"
+            required
+          ></textarea>
+        </div>
+
+        <!-- Back Text Input -->
+        <div class="form-group">
+          <label for="backText">Back (Answer / Solution)</label>
+          <textarea
+            id="backText"
+            [(ngModel)]="formData.backText"
+            name="backText"
+            placeholder="Enter the answer or solution..."
+            rows="3"
+            [disabled]="isSubmitting()"
+            required
+          ></textarea>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="form-actions">
+          <button
+            type="button"
+            class="btn-cancel"
+            (click)="closeAddCardModal()"
+            [disabled]="isSubmitting()"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="btn-submit"
+            [disabled]="isSubmitting()"
+          >
+            {{ isSubmitting() ? 'Creating...' : 'Create Card' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}
+
+<router-outlet />
+

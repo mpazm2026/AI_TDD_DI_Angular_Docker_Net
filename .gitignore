@@ -1,0 +1,59 @@
+# .NET build outputs
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rtifacts/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+*.code-workspace
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+*.nuget.props
+*.nuget.targets
+
+# ASP.NET Core
+appsettings.Development.json
+appsettings.Local.json
+*.db
+*.sqlite
+
+# .NET test results
+TestResults/
+coverage/
+*.trx
+
+# Angular / frontend artifacts
+node_modules/
+dist/
+out/
+build/
+.angular/
+.ng/
+coverage/
+.npm/
+.parcel-cache/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db

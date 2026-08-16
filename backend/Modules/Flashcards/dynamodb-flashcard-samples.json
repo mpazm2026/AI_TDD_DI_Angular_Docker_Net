@@ -1,0 +1,32 @@
+[
+  {
+    "Id": "card-001",
+    "FrontText": "What is the capital of France?",
+    "BackText": "Paris",
+    "CreatedAt": "2026-08-12T10:00:00Z"
+  },
+  {
+    "Id": "card-002",
+    "FrontText": "What does HTML stand for?",
+    "BackText": "HyperText Markup Language",
+    "CreatedAt": "2026-08-12T10:05:00Z"
+  },
+  {
+    "Id": "card-003",
+    "FrontText": "What is 2 + 2?",
+    "BackText": "4",
+    "CreatedAt": "2026-08-12T10:10:00Z"
+  },
+  {
+    "Id": "card-004",
+    "FrontText": "Which planet is known as the Red Planet?",
+    "BackText": "Mars",
+    "CreatedAt": "2026-08-12T10:15:00Z"
+  },
+  {
+    "Id": "card-005",
+    "FrontText": "What is the purpose of CSS?",
+    "BackText": "To style and layout web pages",
+    "CreatedAt": "2026-08-12T10:20:00Z"
+  }
+]

@@ -1,0 +1,24 @@
+# Build artifacts
+**/bin/
+**/obj/
+
+# Test projects (not needed in the production image)
+**/Flashcards.Tests/
+
+# Secrets — never bake credentials into the image
+**/.env
+**/.env.*
+
+# IDE / OS noise
+**/.vs/
+**/.vscode/
+**/.DS_Store
+**/Thumbs.db
+
+# Git
+**/.git/
+**/.gitignore
+
+# Docs and samples
+**/README.md
+**/dynamodb-flashcard-samples.json

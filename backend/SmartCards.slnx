@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Modules/" />
+  <Folder Name="/Modules/Flashcards/">
+    <Project Path="Modules/Flashcards/Flashcards.Controllers/Flashcards.Controllers.csproj" />
+    <Project Path="Modules/Flashcards/Flashcards.Core/Flashcards.Core.csproj" />
+    <Project Path="Modules/Flashcards/Flashcards.Infrastructure/Flashcards.Infrastructure.csproj" />
+    <Project Path="Modules/Flashcards/Flashcards.Tests/Flashcards.Tests.csproj" />
+  </Folder>
+  <Project Path="SmartCards.API/SmartCards.API.csproj" />
+</Solution>
