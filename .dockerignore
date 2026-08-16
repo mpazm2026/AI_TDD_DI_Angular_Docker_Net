@@ -9,6 +9,9 @@
 **/.env
 **/.env.*
 
+# Frontend — not part of the backend image
+frontend/
+
 # IDE / OS noise
 **/.vs/
 **/.vscode/
