@@ -6,6 +6,7 @@ This project was built using **Gemini**, **Copilot Actions**, **Antigravity CLI*
 * **Copilot Actions**: Provided lower-quality code outputs, even when guided by comprehensive `.md` files.
 * **Antigravity CLI**: Delivered excellent coding results, but the free tier token quota is highly restrictive (lasting only 1 hour or a few multi-file requests).
 * **Gemini**: Consistently provided strong architectural suggestions and a better high-level overview.
+* **AQD CLI**: Has the best behavior so far on a free tier, showing the percentage used, great quality code and following prompts, directions and finding potential defects.
 
 #### Architecture & Deployment
 * **Backend**: Built with **.NET 10** for Docker practice, utilizing **Dependency Injection (DI)** for decoupling. Deployed on **Render.com**.
