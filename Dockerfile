@@ -39,6 +39,11 @@ COPY --from=build /app/publish .
 # Render.com requires the app to bind to port 10000.
 ENV ASPNETCORE_URLS=http://+:10000
 
+# Disable inotify-based file watchers — the Render free tier hits the host
+# OS limit of 128 inotify instances, crashing the app at startup.
+# Polling is fine for a containerized production app with no hot-reload.
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true
+
 EXPOSE 10000
 
 ENTRYPOINT ["dotnet", "SmartCards.API.dll"]
