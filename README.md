@@ -1,14 +1,20 @@
-- Created using Gemini, Copilot Actions, Antigravity CLI, and Amazon Q Developer CLI.
-- Used multiple AIs for comparison:
-  - Found out that Copilot Actions is not the best for quality code, even with the .md file.
-  - Antigravity CLI is great for coding, but the token quota for the free tier is really short (1 hour, a couple of requests for multi-file requests).
-  - Gemini, as always, is great with suggestions and the bigger picture overall.
-- Used DI for decoupling, Angular frontend for practice, and .NET 10 for Docker practice as well.
-- Deployed backend on Render.com.
-- Deployed frontend on Vercel.com.
-- The backend required a Dockerfile since Render.com does not execute .NET natively.
-- The Dockerfile is normally a bit complex due to differences in the image creation approaches between Gemini and the local AI agent.
-- In this particular case, there were three main changes:
-  - AQD CLI found that the .gitignore file was discarding one project.
-  - The .csproj files were using `\` instead of `/`, which is required by the Linux servers on Render.com.
-  - `DOTNET_USE_POLLING_FILE_WATCHER=true` was required to avoid Render doing it and stopping the deployment process.
+### Tech Stack & AI Tools Comparison
+
+This project was built using **Gemini**, **Copilot Actions**, **Antigravity CLI**, and **Amazon Q Developer (AQD) CLI**. 
+
+#### AI Tools Insights
+* **Copilot Actions**: Provided lower-quality code outputs, even when guided by comprehensive `.md` files.
+* **Antigravity CLI**: Delivered excellent coding results, but the free tier token quota is highly restrictive (lasting only 1 hour or a few multi-file requests).
+* **Gemini**: Consistently provided strong architectural suggestions and a better high-level overview.
+
+#### Architecture & Deployment
+* **Backend**: Built with **.NET 10** for Docker practice, utilizing **Dependency Injection (DI)** for decoupling. Deployed on **Render.com**.
+* **Frontend**: Built with **Angular** for development practice. Deployed on **Vercel.com**.
+
+#### Docker & Deployment Engineering
+Because Render.com does not support .NET natively, a custom `Dockerfile` was required. Standardizing the Docker configuration was challenging due to differing image-creation approaches between Gemini and the local AI agent. 
+
+Three critical adjustments were made to ensure a successful deployment:
+1. **Repository Rules**: AQD CLI identified that the `.gitignore` file was inadvertently discarding a required project.
+2. **Path Separators**: Updated pathing in `.csproj` files to use Linux-compatible forward slashes (`/`) instead of Windows backslashes (`\`).
+3. **Environment Configuration**: Configured `DOTNET_USE_POLLING_FILE_WATCHER=true` to prevent Render's default file-watching behavior from stalling the deployment process.
