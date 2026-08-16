@@ -1,14 +1,14 @@
-- Created using Gemini, Copilot Actions, Antigravity CLI and Amazon Q Developer CLI
-- Used multiple ASs for compare:
-  - found out that Copilot Actions is not the best on quality code, event with the .md file
-  - Antigracity CLI is great in coding but the token quota for free tier is really short (1 hour, couple for multifile requests)
-  - Gemini, as always great with the suggestions and bigger picture overall.
-- Used DI dor decoupling, Angular front end as practice and .net 10 for the docker practice as well
-- Deployed backed in render.com
-- Deployed frontend in verce.com
-- The backend required a Dockerfile since render.com do not executes .net natively
-- The docker file is regularly a bit complex due the differences in the image creation approaches between gemini and the local AI agent
+- Created using Gemini, Copilot Actions, Antigravity CLI, and Amazon Q Developer CLI.
+- Used multiple AIs for comparison:
+  - Found out that Copilot Actions is not the best for quality code, even with the .md file.
+  - Antigravity CLI is great for coding, but the token quota for the free tier is really short (1 hour, a couple of requests for multi-file requests).
+  - Gemini, as always, is great with suggestions and the bigger picture overall.
+- Used DI for decoupling, Angular frontend for practice, and .NET 10 for Docker practice as well.
+- Deployed backend on Render.com.
+- Deployed frontend on Vercel.com.
+- The backend required a Dockerfile since Render.com does not execute .NET natively.
+- The Dockerfile is normally a bit complex due to differences in the image creation approaches between Gemini and the local AI agent.
 - In this particular case, there were three main changes:
-  - AQD CLI found that the .gitignore was discarding one projec
-  - The csproj files were using \ instead of / required by the linux servers in Render.com
-  - The DOTNET_USE_POLLING_FILE_WATCHER=true was required to avoid Render doing it and stopping the deployment process.
+  - AQD CLI found that the .gitignore file was discarding one project.
+  - The .csproj files were using `\` instead of `/`, which is required by the Linux servers on Render.com.
+  - `DOTNET_USE_POLLING_FILE_WATCHER=true` was required to avoid Render doing it and stopping the deployment process.
